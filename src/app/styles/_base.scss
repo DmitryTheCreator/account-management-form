@@ -1,0 +1,35 @@
+@mixin full-screen {
+  height: 100%;
+  width: 100%;
+}
+
+html,
+body {
+  @include full-screen;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  font-family: Inconsolata, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: 0.04em;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  #app {
+    @include full-screen;
+  }
+}
+
+.container {
+  @include full-screen;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

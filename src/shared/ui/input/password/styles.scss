@@ -1,0 +1,25 @@
+.ui-input--password-wrapper {
+  position: relative;
+
+  .ui-input {
+    padding-right: 2.5rem;
+  }
+
+  .ui-input__toggle {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    user-select: none;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--color-secondary);
+    }
+  }
+}

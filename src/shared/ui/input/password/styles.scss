@@ -2,7 +2,9 @@
   position: relative;
 
   .ui-input {
+    width: 100%;
     padding-right: 2.5rem;
+    box-sizing: border-box;
   }
 
   .ui-input__toggle {

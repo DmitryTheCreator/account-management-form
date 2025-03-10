@@ -4,7 +4,7 @@
 
     <span class="ui-input__toggle" @click="togglePassword">
       <Eye :size="iconSize" v-if="passwordVisible" />
-      <EyeClosed :size="iconSize" v-else />
+      <EyeOff :size="iconSize" v-else />
     </span>
   </div>
 </template>
@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { computed, ref, useAttrs, defineEmits, watch } from "vue";
 import { BaseInput } from "..";
-import { Eye, EyeClosed } from "lucide-vue-next";
+import { Eye, EyeOff } from "lucide-vue-next";
 
 const attrs = useAttrs();
 

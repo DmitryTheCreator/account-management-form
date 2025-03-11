@@ -8,10 +8,10 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, InputTypeHTMLAttribute } from "vue";
+import { InputTypeHTMLAttribute } from "vue";
 
 interface IProps {
-  modelValue?: string | number;
+  modelValue?: string | number | null;
   type?: InputTypeHTMLAttribute;
 }
 

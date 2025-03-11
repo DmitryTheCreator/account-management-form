@@ -10,19 +10,19 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, useAttrs, defineEmits, watch } from "vue";
+import { computed, ref, useAttrs, watch } from "vue";
 import { BaseInput } from "..";
 import { Eye, EyeOff } from "lucide-vue-next";
 
 const attrs = useAttrs();
 
 interface IProps {
-  modelValue?: string;
+  modelValue?: string | null;
 }
 
 const { modelValue = "" } = defineProps<IProps>();
 const emit = defineEmits<{
-  "update:modelValue": [modelValue: string];
+  "update:modelValue": [modelValue: string | null];
 }>();
 
 const model = computed({

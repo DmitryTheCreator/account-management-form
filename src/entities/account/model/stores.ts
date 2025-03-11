@@ -53,7 +53,10 @@ export const useAccountStore = defineStore("account", (): IAccountStore => {
 
     if (accountIndex > -1) {
       if (update.label) {
-        update.label = typeof update.label === "string" ? normalizeLabels(update.label) : update.label;
+        update.label =
+          typeof update.label === "string"
+            ? normalizeLabels(update.label)
+            : update.label;
       }
 
       accounts.value[accountIndex] = {

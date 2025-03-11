@@ -11,6 +11,6 @@ export const mockAccounts: IAccount[] = [
     login: "voldemort",
     type: "Локальная",
     password: "avadakedavra",
-    label: [{ text: "Wizard" }, { "text": "Bald"}],
+    label: [{ text: "Wizard" }, { text: "Bald" }],
   },
 ];

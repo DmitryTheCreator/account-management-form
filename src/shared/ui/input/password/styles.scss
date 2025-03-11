@@ -1,3 +1,5 @@
+@use "/src/app/styles/variables";
+
 .ui-input--password-wrapper {
   position: relative;
 
@@ -21,7 +23,7 @@
     transition: color 0.2s ease-in-out;
 
     &:hover {
-      color: var(--color-secondary);
+      color: variables.$secondary;
     }
   }
 }

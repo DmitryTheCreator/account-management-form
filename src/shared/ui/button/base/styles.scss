@@ -1,0 +1,78 @@
+@use "sass:color";
+@use "sass:map";
+@use "/src/app/styles/variables";
+
+$btn-colors: (
+  primary: variables.$primary,
+  secondary: variables.$secondary,
+  success: variables.$success,
+  danger: variables.$danger,
+  warning: variables.$warning,
+  dark: variables.$dark,
+);
+
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: variables.$primary;
+  background-color: #fff;
+  border: 1px solid variables.$secondary;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    background-color: variables.$primary;
+    color: #fff;
+    border-color: variables.$primary;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+  }
+
+  &:disabled {
+    background-color: #f5f5f5;
+    color: #aaa;
+    border-color: #ddd;
+    cursor: not-allowed;
+  }
+
+  svg {
+    vertical-align: middle;
+  }
+}
+
+@mixin button-variant($variant) {
+  $color: map.get($btn-colors, $variant);
+  @if $color {
+    border-color: $color;
+    color: $color;
+
+    &:hover {
+      background-color: $color;
+      color: #fff;
+      border-color: $color;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 3px color.scale($color, $lightness: 70%);
+    }
+  }
+}
+
+@each $name, $color in $btn-colors {
+  .ui-button--#{$name} {
+    @include button-variant($name);
+  }
+}

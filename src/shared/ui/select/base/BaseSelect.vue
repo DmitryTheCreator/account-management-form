@@ -1,5 +1,5 @@
 <template>
-  <select class="ui-select">
+  <select class="ui-select" v-model="selectedValue">
     <option v-for="option in localOptions" :key="getOptionValue(option)">
       {{ getOptionLabel(option) }}
     </option>
@@ -13,12 +13,18 @@ type Primitive = string | number | boolean | symbol | bigint | null | undefined;
 type OptionObject = Record<string, unknown>;
 
 interface IProps {
+  modelValue?: unknown;
   options: Primitive[] | OptionObject[];
   optionValue?: string;
   optionLabel?: string;
 }
 
+const emit = defineEmits<{
+  "update:modelValue": [modelValue: string];
+}>();
+
 const {
+  modelValue,
   options,
   optionValue = "id",
   optionLabel = "label",
@@ -40,6 +46,11 @@ const localOptions = computed<(Primitive | TransformedOption)[]>(() => {
     );
   }
   return options as (Primitive | TransformedOption)[];
+});
+
+const selectedValue = computed({
+  get: () => modelValue,
+  set: (value: string) => emit("update:modelValue", value),
 });
 
 const isPrimitive = (value: unknown): value is Primitive => {

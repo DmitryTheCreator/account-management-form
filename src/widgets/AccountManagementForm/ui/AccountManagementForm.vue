@@ -3,9 +3,9 @@
     <div class="header">
       <h1>Учетные записи</h1>
       <BaseButton
-        class="add-button"
         aria-label="Добавить аккаунт"
         title="Добавить аккаунт"
+        class="add-button"
         @click="onAddAccount"
       >
         <UserPlus :size="18" />
@@ -29,15 +29,16 @@
         :key="account.id"
       >
         <BaseInput
-          placeholder="Метки"
           v-model="labelStrings[index]"
+          placeholder="Метки"
+          maxlength="50"
           @blur="
             updateAccount({ login: account.login, label: labelStrings[index] })
           "
         />
         <BaseSelect
-          :options="typeOptions"
           v-model="account.type"
+          :options="typeOptions"
           @change="updateAccount(account)"
         />
 
@@ -46,8 +47,9 @@
         >
           <div>
             <BaseInput
-              placeholder="Логин"
               v-model="account.login"
+              placeholder="Логин"
+              maxlength="100"
               class="wide-input"
               @blur="updateAccount(account)"
             />
@@ -58,8 +60,8 @@
 
           <div v-if="account.type !== 'LDAP'">
             <PasswordInput
-              placeholder="Пароль"
               v-model="account.password"
+              placeholder="Пароль"
               @blur="updateAccount(account)"
             />
             <div class="error caption" v-if="fieldErrors[account.id]?.password">
@@ -69,9 +71,9 @@
         </div>
 
         <BaseButton
+          variant="danger"
           aria-label="Удалить аккаунт"
           title="Удалить аккаунт"
-          variant="danger"
           @click="deleteAccount(account.login)"
         >
           <Trash2 :size="18" />

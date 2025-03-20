@@ -12,6 +12,8 @@ $btn-colors: (
 );
 
 .ui-button {
+  box-sizing: border-box;
+  height: 36px;
   display: inline-flex;
   align-items: center;
   justify-content: center;

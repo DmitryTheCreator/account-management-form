@@ -1,6 +1,9 @@
 @use "/src/app/styles/variables";
 
 .ui-select {
+  box-sizing: border-box;
+  height: 36px;
+
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;

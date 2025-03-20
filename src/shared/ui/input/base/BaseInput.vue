@@ -3,7 +3,7 @@
     class="ui-input"
     :type="type"
     :value="modelValue"
-    @input="updateValue"
+    @blur="updateValue"
   />
 </template>
 

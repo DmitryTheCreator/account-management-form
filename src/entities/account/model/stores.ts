@@ -20,7 +20,10 @@ function normalizeLabels(label: IAccount["label"] | string) {
       .map((text) => ({ text }));
   }
 
-  return label;
+  if (Array.isArray(label)) {
+    return label;
+  }
+  return [];
 }
 
 function normalizeAccount(account: IAccount) {
@@ -42,6 +45,12 @@ export const useAccountStore = defineStore("account", (): IAccountStore => {
     if (accountIndex > -1) {
       accounts.value[accountIndex] = account;
     } else {
+      if (!account.id) {
+        const maxId = accounts.value.reduce((max, acc) => {
+          return acc.id && acc.id > max ? acc.id : max;
+        }, 0);
+        account.id = maxId + 1;
+      }
       accounts.value.push(account);
     }
   }
@@ -57,6 +66,10 @@ export const useAccountStore = defineStore("account", (): IAccountStore => {
           typeof update.label === "string"
             ? normalizeLabels(update.label)
             : update.label;
+      }
+
+      if (update.type === "LDAP") {
+        update.password = null;
       }
 
       accounts.value[accountIndex] = {
